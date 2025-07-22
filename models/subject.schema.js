@@ -2,11 +2,6 @@
 import mongoose from 'mongoose';
 
 const subjectSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    unique: true
-  },
-
   name: {
     type: String,
     required: true
