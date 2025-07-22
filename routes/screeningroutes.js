@@ -1,11 +1,5 @@
 import express from 'express';
-import {
-  createVisit,
-  // getAllScreenings,
-  // getScreeningById,
-  // updateScreening,
-  // deleteScreening
-} from '../controllers/screeningController.js';
+import { createVisit } from '../controllers/screeningController.js';
 
 const router = express.Router();
 
