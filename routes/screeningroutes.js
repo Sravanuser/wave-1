@@ -1,5 +1,5 @@
 import express from 'express';
-import { createVisit } from '../controllers/screeningController.js';
+import { createVisit } from '../controllers/screeningcontroller.js';
 
 const router = express.Router();
 
