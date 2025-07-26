@@ -5,7 +5,6 @@ import Study from '../models/study.schema.js';
 export const createSite = async (req, res) => {
   try {
     const { siteName, location, contactEmail, studyId } = req.body; // ⬅️ include `study`
-    console.log('Creating site with data:', req.body);
     // Validate required fields
     if (!siteName || !studyId) {
       return res.status(400).json({ error: 'Site name and study ID are required.' });
@@ -39,7 +38,7 @@ export const createSite = async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Error creating site:', error);
+    e.error('Error creating site:', error);
     return res.status(500).json({
       error: 'Internal server error while creating site.',
       details: error.message
@@ -57,7 +56,6 @@ export const getSitesByStudyId = async (req, res) => {
 
     return res.status(200).json(study.sites); // ✅ Return only the sites array
   } catch (error) {
-    console.error('Error fetching sites for study:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
 };

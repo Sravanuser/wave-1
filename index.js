@@ -6,7 +6,8 @@ import studyRoutes from './routes/studyroutes.js'
 import siteRoutes from './routes/siteroutes.js'
 import subjectRoutes from './routes/subjectroutes.js'
 import screeningRoutes from './routes/screeningroutes.js'
-
+import authenticationRoutes from './routes/authenticationroute.js'
+import cookieParser from 'cookie-parser'
 
 dotenv.config()
 
@@ -15,6 +16,8 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors())
+app.use(cookieParser())
+app.use('/api/auth', authenticationRoutes);
 app.use('/api/studies', studyRoutes);
 app.use('/api/sites', siteRoutes);
 app.use('/api/subjects', subjectRoutes);

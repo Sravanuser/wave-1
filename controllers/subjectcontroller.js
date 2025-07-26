@@ -39,7 +39,6 @@ export const createSubject = async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Error creating subject:', error);
     return res.status(500).json({
       error: 'Internal server error while creating subject.',
       details: error.message
@@ -49,20 +48,17 @@ export const createSubject = async (req, res) => {
 
 export const getAllSubjects = async (req, res) => {
   const { siteId } = req.params;
-  console.log('Fetching subjects for site:', siteId);
   try {
     // ✅ Optional: Validate if site exists
     const siteExists = await Site.findById(siteId).populate('subjects');
     if (!siteExists) {
       return res.status(404).json({ error: 'Site not found' });
     }
-    console.log('Site exists:', siteExists);
     if (!siteExists.subjects || siteExists.subjects.length === 0) {
       return res.status(404).json({ error: 'No subjects found for this site.' });
     }
     return res.status(200).json(siteExists.subjects);
   } catch (error) {
-    console.error('Error fetching subjects:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
 };
